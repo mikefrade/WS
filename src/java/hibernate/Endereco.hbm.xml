@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/10/2016 21:23:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hibernate.Endereco" table="endereco" catalog="banco_dados_api" optimistic-lock="version">
+        <id name="idendereco" type="java.lang.Integer">
+            <column name="idendereco" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="usuario" class="hibernate.Usuario" fetch="select">
+            <column name="usuario_idusuario" not-null="true" />
+        </many-to-one>
+        <property name="longitude" type="double">
+            <column name="longitude" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="latitude" type="double">
+            <column name="latitude" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="tiporesidencia" type="string">
+            <column name="tiporesidencia" length="100" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
