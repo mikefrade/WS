@@ -6,6 +6,7 @@
 package rest;
 
 import classes.Consultas;
+import com.google.gson.Gson;
 import hibernate.Usuario;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -22,12 +23,11 @@ public class ConsultaUsuario {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String buscausuario(){
-        Usuario usu = new Usuario();
+    public String buscausuario() {
         Consultas con = new Consultas();
-        usu = con.login();
-        return usu.toString();      
-      
+        Gson gson = new Gson();
+        String json = gson.toJson(con.login());
+        return json;
     }
     
 }
