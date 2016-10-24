@@ -20,7 +20,8 @@ public class Consultas {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
         List<Usuario> lista = (List<Usuario>) s.createQuery("from Usuario u where u.nome ='marcos'").list();
-        s.close();
+        System.err.println(lista.get(0).toString());
+        s.getTransaction().commit();
         return lista.get(0);
     }
 
