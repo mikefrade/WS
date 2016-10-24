@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rest;
+package classes;
 
 import classes.Consultas;
+import com.google.gson.Gson;
 import hibernate.Usuario;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -16,18 +17,20 @@ import javax.ws.rs.core.MediaType;
  *
  * @author mikef
  */
-
 @Path("/usuario")
 public class ConsultaUsuario {
-    
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String buscausuario(){
+    public String buscausuario() {
         Usuario usu = new Usuario();
         Consultas con = new Consultas();
-        usu = con.login();
-        return usu.toString();      
-      
+        Gson gson = new Gson();
+        usu = con.buscaUsuario();
+        String json = gson.toJson(usu);
+        return json;
     }
     
+
+
 }

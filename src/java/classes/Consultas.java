@@ -16,16 +16,26 @@ import org.hibernate.Session;
  */
 public class Consultas {
 
-    public Usuario login() {
-
+    public Usuario buscaUsuario() {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
-        List<Usuario> lista = (List<Usuario>) s.createQuery("from Usuario u where u.email ='mikefrade@hotmail.com'").list();
-//        Usuario u = (Usuario) s.createQuery("from Usuario u where u.email ='mikefrade@hotmail.com'");
-//        System.out.println(u.getEmail()); 
-           System.out.println(lista.get(0));
-        
-                
+        List<Usuario> lista = (List<Usuario>) s.createQuery("from Usuario u where u.nome ='marcos'").list();
+        s.close();
         return lista.get(0);
+    }
+
+    public Boolean usuarioValido() {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        s.beginTransaction();
+        Boolean resultado = false;
+
+        List<Usuario> lista = (List<Usuario>) s.createQuery("from Usuario u where u.email ='marcos@teste.com.br'").list();
+        s.close();
+
+        if (!lista.isEmpty()) {
+            resultado = true;
+        }
+
+        return resultado;
     }
 }
