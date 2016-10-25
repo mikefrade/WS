@@ -5,6 +5,10 @@
  */
 package classes;
 
+<<<<<<< HEAD:src/java/classes/ConsultaUsuario.java
+=======
+import classes.Consultas;
+>>>>>>> 5aceea03eb213c94381ab43817dfef387ac7fb7d:src/java/rest/ConsultaUsuario.java
 import com.google.gson.Gson;
 import hibernate.Usuario;
 import javax.ws.rs.GET;
@@ -22,11 +26,17 @@ public class ConsultaUsuario {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String buscausuario() {
+<<<<<<< HEAD:src/java/classes/ConsultaUsuario.java
         Usuario usu;
         Consultas con = new Consultas();
         Gson gson = new Gson();
         usu = con.buscaUsuario();
         String json = gson.toJson(usu);
+=======
+        Consultas con = new Consultas();
+        Gson gson = new Gson();
+        String json = gson.toJson(con.login());
+>>>>>>> 5aceea03eb213c94381ab43817dfef387ac7fb7d:src/java/rest/ConsultaUsuario.java
         return json;
     }
     
