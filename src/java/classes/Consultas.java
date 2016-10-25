@@ -25,16 +25,16 @@ public class Consultas {
         return lista.get(0);
     }
 
-    public Boolean usuarioValido() {
+    public String usuarioValido() {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
-        Boolean resultado = false;
+        String resultado = "false";
 
         List<Usuario> lista = (List<Usuario>) s.createQuery("from Usuario u where u.email ='marcos@teste.com.br'").list();
-        s.close();
+        s.getTransaction().commit();
 
         if (!lista.isEmpty()) {
-            resultado = true;
+            resultado = "true";
         }
 
         return resultado;
