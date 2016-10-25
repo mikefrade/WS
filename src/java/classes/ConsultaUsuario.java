@@ -5,7 +5,6 @@
  */
 package classes;
 
-import classes.Consultas;
 import com.google.gson.Gson;
 import hibernate.Usuario;
 import javax.ws.rs.GET;
@@ -23,7 +22,7 @@ public class ConsultaUsuario {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String buscausuario() {
-        Usuario usu = new Usuario();
+        Usuario usu;
         Consultas con = new Consultas();
         Gson gson = new Gson();
         usu = con.buscaUsuario();

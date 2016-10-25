@@ -19,10 +19,9 @@ public class ConsultaUsuarioValido {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Boolean eValido(){
+    public String eValido(){
         Consultas con = new Consultas();
-        Boolean resposta = con.usuarioValido();
-        return resposta;
+        return con.usuarioValido();
     }
 
 }

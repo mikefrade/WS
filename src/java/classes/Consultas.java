@@ -5,9 +5,11 @@
  */
 package classes;
 
+import hibernate.Seguranca;
 import hibernate.Usuario;
 import hibernateutil.HibernateUtil;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -38,5 +40,19 @@ public class Consultas {
         }
 
         return resultado;
+    }
+
+    public Seguranca requisicaoLogin(String email) {
+        
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        s.beginTransaction();
+        
+        Query q = s.createQuery("from Seguranca seg where seg.usuario.email = :email");
+        q.setParameter("email", email);
+        List<Seguranca> lista = (List<Seguranca>) q.list();
+        System.err.println(lista.get(0).toString());
+        s.getTransaction().commit();
+
+        return lista.get(0);
     }
 }
